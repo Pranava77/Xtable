@@ -34,3 +34,35 @@ return (
 };
 
 
+const XTable = () => {
+  const [sortedData, setSortedData] = useState([...mainTable]);
+
+  const sortByDate = ()=>{
+      let data = [...sortedData];
+      data.sort((a,b)=> {
+          if(a.date !== b.date) return new Date(b.date)- new Date(a.date);
+          return b.views-a.views
+      });
+      setSortedData([...data]);
+  }
+
+  const sortByViews = ()=>{
+      let data = [...sortedData];
+      data.sort((a,b)=> {
+          if(a.views !== b.views) return b.views-a.views;
+          return new Date(b.date)- new Date(a.date);
+      })
+      setSortedData([...data]);
+  }
+  return (
+      <div>
+          <h1>Date and Views Table</h1>
+          <button onClick={sortByDate}>Sort by Date</button>
+          <button onClick={sortByViews}>Sort by Views</button>
+
+          <DataTable items={sortedData} />
+      </div>
+  );
+};
+
+export default XTable;
