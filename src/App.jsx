@@ -7,3 +7,30 @@ const mainTable = [
     { date: "2023-09-02", views: 120, article: "Article 3" },
     { date: "2020-09-03", views: 200, article: "Article 4" }
 ]
+
+
+const DataTable = ({ items }) => {
+  // console.log(items)
+return (
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Views</th>
+                <th>Article</th>
+            </tr>
+        </thead>
+        <tbody>
+            {items.map(item => (
+                <tr>
+                    <td>{item.date}</td>
+                    <td>{item.views}</td>
+                    <td>{item.article}</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+);
+};
+
+
